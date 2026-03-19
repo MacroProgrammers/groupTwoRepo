@@ -1,8 +1,8 @@
 
-public class Test {
+public class Main {
 
-	public static void main(String[] args) {
-
+	public static void main(String[] args) {		
+		
 		int expected = 1;
 		int actual = factorial(0);
 
@@ -10,7 +10,7 @@ public class Test {
 			System.out.println("Test passed");
 		} else {
 			System.out.println("Test failed: expected " + expected + " but got " + actual);
-		}
+		} 
 
 	}
 

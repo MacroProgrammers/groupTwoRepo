@@ -78,7 +78,13 @@ We will review this:
 
 ## Team members:
 - Jacob Hefley
+<<<<<<< HEAD
+- Tony Hoyev
+- Murtaza Akbari
+
+=======
 - Chancie Van
 - Yasir Farah
 - Murtaza Akbari
 - Tony Hoyev
+>>>>>>> 3db3cf6759a88542f29f28177317b2a34ce7a874
