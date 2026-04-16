@@ -17,8 +17,11 @@ public class Main {
      */
     public static void main(String[] args) {
 
-// This exists just for bug testing reasons
+// Testing output
 System.out.println("Program Started");
+
+// I have no clue what this does, but DON'T TOUCH IT.
+SwingUtilities.invokeLater(() -> {
 
     JFrame frame = new JFrame("Welcome to Sticky Note!");
         frame.setLayout(new BorderLayout());
@@ -27,22 +30,46 @@ System.out.println("Program Started");
     label.setHorizontalAlignment(SwingConstants.LEFT);
     frame.add(label, BorderLayout.NORTH);
 
+    JTextArea textArea = new JTextArea();
+    
+// Start user picks color
+
+    JButton colorPick = new JButton("Change Color");
+    
+    //Jbutton initialization
+
+    colorPick.addActionListener(e -> {
+
+        Color chosenColor = JColorChooser.showDialog(
+            frame,
+            "Choose Color",
+            frame.getContentPane().getBackground()
+        );
+        
+//This actually chnages the color, don't remove 'if', needs the check or breaks.
+        if (chosenColor != null) {
+            //sets frame then text area.
+            frame.getContentPane().setBackground(chosenColor);
+            textArea.setBackground(chosenColor);
+        }
+    });
+
 //	label.setVerticalAlignment(SwingConstants.TOP);
 //  Removed for now, Alignment setVerticalAlignment is redundant to NORTH.
 
 //  Window Setup
 
-	JTextArea textArea = new JTextArea();
-//  textArea.setEditable(true);
 	JScrollPane scrollPane = new JScrollPane(textArea);
     frame.add(scrollPane, BorderLayout.CENTER);
 
 // Frame setup
-
+        frame.add(colorPick, BorderLayout.SOUTH);
+        
         frame.setSize(500, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
+        });
     }
 }
