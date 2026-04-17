@@ -1,5 +1,11 @@
+//Grouped new dependencies.
 import javax.swing.*;
 import java.awt.*;
+
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+
 //Added java abstract window tk for UI functionality
 /* 
  * Main class with main method invoked on app start.
@@ -32,13 +38,25 @@ SwingUtilities.invokeLater(() -> {
 
     JTextPane textPane = new JTextPane();
 
-//    JTextArea textArea = new JTextArea();
-    
-// Start user picks color
+//Ui and graphic control buttons
 
+    JButton boldButton = new JButton("Bold");
+    JButton highlightButton = new JButton("Highlight");
     JButton colorPick = new JButton("Change Color");
+
+
+//Action listeners, these call >>TextFormatter on clicks.
+
+    highlightButton.addActionListener(e -> {
+        TextFormatter.highlight(textPane);
+    });
+
+    boldButton.addActionListener(e -> {
+        TextFormatter.boldText(textPane);
+    });
     
-    //Jbutton initialization
+
+// Start user picks color
 
     colorPick.addActionListener(e -> {
 
@@ -50,7 +68,6 @@ SwingUtilities.invokeLater(() -> {
         
 //This actually chnages the color, don't remove 'if', needs the check or breaks.
         if (chosenColor != null) {
-            //sets frame then text area.
             frame.getContentPane().setBackground(chosenColor);
             textPane.setBackground(chosenColor);
         }
@@ -65,8 +82,14 @@ SwingUtilities.invokeLater(() -> {
     frame.add(scrollPane, BorderLayout.CENTER);
 
 // Frame setup
-        frame.add(colorPick, BorderLayout.SOUTH);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(colorPick);
+        buttonPanel.add(boldButton);
+        buttonPanel.add(highlightButton);
         
+        frame.add(buttonPanel, BorderLayout.SOUTH);
+
+    //    frame.add(colorPick, BorderLayout.SOUTH);
         frame.setSize(500, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setLocationRelativeTo(null);
