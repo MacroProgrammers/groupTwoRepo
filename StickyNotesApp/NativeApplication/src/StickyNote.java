@@ -7,7 +7,15 @@ import javax.swing.text.StyledDocument;
 public class StickyNote extends JFrame{
     
     public StickyNote(){
-            JFrame frame = new JFrame("Welcome to Sticky Note!");
+
+    //UI Manager Changes (Font for frames, Monospace used.)
+    
+    UIManager.put("Label.font", new Font("DialogInput", Font.PLAIN, 18));
+    UIManager.put("Button.font", new Font("DialogInput", Font.PLAIN, 12));
+    UIManager.put("TextField.font", new Font("DialogInput", Font.PLAIN, 18));
+
+        JFrame frame = new JFrame("QuickNotes.");
+        frame.getContentPane().setBackground(Color.DARK_GRAY);
         frame.setLayout(new BorderLayout());
         
     JLabel label = new JLabel("Enter text");
@@ -15,7 +23,7 @@ public class StickyNote extends JFrame{
     frame.add(label, BorderLayout.NORTH);
 
     JTextPane textPane = new JTextPane();
-
+    
 //Ui and graphic control button
 
     JButton newNoteButton = new JButton("New Note");
@@ -28,6 +36,14 @@ public class StickyNote extends JFrame{
 
     highlightButton.addActionListener(e -> {
         TextFormatter.highlight(textPane);
+   
+     /*      THIS IS A PENDING CHANGE.
+        highlightButton.addActionListener(e -> {
+         if (TextFormatter.highlight(textPane) = true){
+            
+         }
+        });
+        */
     });
 
     boldButton.addActionListener(e -> {
@@ -67,12 +83,13 @@ public class StickyNote extends JFrame{
 
 // Frame setup
         JPanel buttonPanel = new JPanel();
+
         buttonPanel.add(colorPick);
         buttonPanel.add(boldButton);
         buttonPanel.add(highlightButton);
         buttonPanel.add(newNoteButton);
         
-        frame.add(buttonPanel, BorderLayout.SOUTH);
+        frame.add(buttonPanel, BorderLayout.NORTH);
 
     //    frame.add(colorPick, BorderLayout.SOUTH);
         frame.setSize(500, 400);
