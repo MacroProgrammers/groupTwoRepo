@@ -1,0 +1,9 @@
+*.msi binary
+*.deb binary
+*.dmg binary
+*.exe binary
+*.jar binary
+*.class binary
+*.png binary
+*.ico binary
+*.icns binary
